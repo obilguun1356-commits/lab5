@@ -11,6 +11,7 @@
     background-color: #f5f5f5;
   }
 
+  /* HEADER */
   .jumbotron {
     background-color: #13124F;
     color: white;
@@ -28,6 +29,7 @@
     font-weight: bold;
   }
 
+  /* MAIN CONTENT */
   .content {
     display: flex;
     justify-content: space-between;
@@ -38,6 +40,7 @@
   .right { width: 35%; }
   iframe { width: 100%; height: 500px; margin-top: 20px; border: none; }
 
+  /* MESSAGES */
   .messages {
     background-color: #F61067;
     color: white;
@@ -58,6 +61,7 @@
     font-size: 14px;
   }
 
+  /* CARD */
   .card {
     background-color: #1B1B6C;
     border-radius: 0;
@@ -81,6 +85,7 @@
   .card-footer { background-color: #352BA5; text-align: center; padding: 10px; }
   .card-footer a { color: #ffffff; font-size: 13px; text-decoration: underline; }
 
+  /* VOTE BOX */
   .vote-box {
     background-color: #ffffff;
     border-radius: 0;
@@ -91,6 +96,7 @@
   }
   .vote-box h4 { color: #1B1B6C; margin-bottom: 12px; font-weight: 600; }
 
+  /* Progress Bar ABOVE Buttons */
   .progress-container {
     display: flex;
     height: 22px;
@@ -102,20 +108,13 @@
   .progress-cool {
     background-color: #F61067;
     width: 50%;
-    color: white;
-    text-align: center;
-    line-height: 22px;
-    font-weight: bold;
   }
   .progress-lame {
     background-color: #25c991;
     width: 50%;
-    color: white;
-    text-align: center;
-    line-height: 22px;
-    font-weight: bold;
   }
 
+  /* Buttons (Now Longer) */
   .vote-buttons {
     display: flex;
     gap: 30px;
@@ -137,6 +136,7 @@
     background-color: white; color: #25c991; border: 2px solid #25c991;
   }
 
+  /* FOOTER */
   footer {
     display: flex;
     justify-content: flex-start;
@@ -148,10 +148,11 @@
     margin-top: 20px;
   }
 
+  /* MEDIA QUERIES */
   @media (max-width: 1024px) {
     .content { flex-direction: column; padding: 30px; }
     .left, .right { width: 100%; }
-    iframe { height: 250px; }
+    iframe { height: 350px; }
     .vote-buttons button { max-width: 180px; font-size: 16px; }
   }
 
@@ -204,11 +205,13 @@
     <div class="vote-box">
       <h4>Cast your vote! What do you think about space? See vote progress bar below!</h4>
       
+      <!-- Progress Bar ABOVE Buttons -->
       <div class="progress-container">
-        <div class="progress-cool" id="progress-cool">50%</div>
-        <div class="progress-lame" id="progress-lame">50%</div>
+        <div class="progress-cool" id="progress-cool"></div>
+        <div class="progress-lame" id="progress-lame"></div>
       </div>
 
+      <!-- Buttons BELOW -->
       <div class="vote-buttons">
         <button id="cool-btn">COOL</button>
         <button id="lame-btn">LAME</button>
@@ -233,11 +236,9 @@ function updateProgress() {
   let coolPercent = Math.round((coolVotes / total) * 100);
   let lamePercent = 100 - coolPercent;
 
-  progressCool.style.width = coolPercent;
-  progressCool.textContent = coolPercent;
-
-  progressLame.style.width = lamePercent;
-  progressLame.textContent = lamePercent;
+  // Зөвхөн width-г update хийнэ, текст дотор гаргахгүй
+  progressCool.style.width = coolPercent + '%';
+  progressLame.style.width = lamePercent + '%';
 }
 
 coolBtn.addEventListener('click', () => { coolVotes++; updateProgress(); });
