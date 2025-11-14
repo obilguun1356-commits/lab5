@@ -232,11 +232,9 @@ function updateProgress() {
   progressLame.style.width = lamePercent + '%';
 }
 
-// Button click events
 coolBtn.addEventListener('click', () => { coolVotes++; updateProgress(); });
 lameBtn.addEventListener('click', () => { lameVotes++; updateProgress(); });
 
-// Initialize progress bar 70:30 without showing text
 updateProgress();
 </script>
 
