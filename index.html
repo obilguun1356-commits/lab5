@@ -1,231 +1,250 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CV</title>
-
-<!-- Mongolian vertical script font -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Bootstrap Vote Page</title>
 <style>
-:root{
-  --bg:#0b0f1a;
-  --pattern:#23283f;
-  --overlay: rgba(2,6,15,0.28);
-  --text:#ffffff;
-  --muted:#b6bac6;
-  --container-width: 900px;
-}
-
-/* Reset */
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  background:var(--bg);
-  font-family: Inter, Arial, sans-serif;
-  color:var(--text);
-  padding:40px 20px;
-  display:flex;
-  justify-content:center;
-}
-
-/* Background pattern */
-.bg-svg{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  opacity:0.12;
-  z-index:0;
-}
-.overlay{
-  position:fixed;
-  inset:0;
-  background:var(--overlay);
-  z-index:1;
-}
-
-/* Whole CV */
-.cv{
-  position:relative;
-  z-index:2;
-  width:100%;
-  max-width:var(--container-width);
-  display:grid;
-  grid-template-columns: 80px 280px 1fr;
-  gap:24px;
-}
-
-/* Vertical Mongolian */
-.mongol{
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-family:"Noto Sans Mongolian", sans-serif;
-  font-size:24px;
-  padding-top:20px;
-  color:var(--text);
-  border-right:1px solid rgba(255,255,255,0.15);
-}
-
-/* Left panel */
-.side{
-  background:rgba(255,255,255,0.03);
-  padding:24px;
-  border-left:4px solid rgba(255,255,255,0.04);
-}
-
-.photo{
-  height:160px;
-  font-size:16px;
-  color:var(--muted);
-  border:1px solid rgba(255,255,255,0.07);
-  display:flex;justify-content:center;align-items:center;
-}
-
-/* Contact + Skills */
-.name{font-size:22px;margin-top:18px;font-weight:700;}
-.role{font-size:13px;color:var(--muted);margin-top:6px;}
-.contact{margin-top:16px;font-size:13px;color:var(--muted);}
-.contact div{margin:6px 0;}
-
-.section-title{
-  margin-top:22px;
-  font-size:12px;
-  text-transform:uppercase;
-  color:var(--muted);
-  letter-spacing:1px;
-}
-
-.skills{
-  margin-top:10px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.skill{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.06);
-  padding:6px 10px;
-  font-size:13px;
-}
-
-/* Right main */
-.main{
-  background:rgba(255,255,255,0.02);
-  padding:28px;
-  border-left:4px solid rgba(255,255,255,0.03);
-}
-
-.summary{
-  font-size:14px;color:var(--muted);
-}
-.block{margin-top:18px;}
-.job{margin-top:12px;padding-bottom:12px;border-bottom:1px dashed rgba(255,255,255,0.05);}
-.job h4{font-size:15px;}
-.job .meta{font-size:13px;color:var(--muted);}
-.job p{margin-top:6px;color:var(--muted)}
-
-/* Responsive */
-@media(max-width:880px){
-  .cv{
-    grid-template-columns:1fr;
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
   }
-  .mongol{display:none;}
-}
 
-@media print{
-  body{background:white;color:black}
-  .bg-svg,.overlay{display:none;}
-  .side,.main{background:white;color:black;}
-  .skill{background:#eee;color:black;}
-}
+  .jumbotron {
+    background-color: #13124F;
+    color: white;
+    padding: 80px 60px;
+    text-align: left;
+  }
+  .jumbotron h1 { font-size: 48px; margin: 0; }
+  .jumbotron p { font-size: 18px; margin: 10px 0 30px 0; }
+  .btn-learn {
+    background-color: #F61067;
+    color: white;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: bold;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 60px;
+    gap: 20px;
+  }
+  .left { width: 60%; }
+  .right { width: 35%; }
+  iframe { width: 100%; height: 300px; margin-top: 20px; border: none; }
+
+  .messages {
+    background-color: #F61067;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .messages span.badge {
+    background-color: #1B1B6C;
+    color: white;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+
+  .card {
+    background-color: #1B1B6C;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    color: white;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .card-header { background-color: #9090A5; padding: 15px; color: white; }
+  .card-body { padding: 20px; background-color: #13124F; }
+  .card-body input {
+    width: 100%; padding: 10px; border: none; border-radius: 0;
+    margin-bottom: 15px; background-color: #1B1B6C; color: white;
+  }
+  .card-body button {
+    width: 100%; padding: 12px; background-color: #F61067;
+    border: none; border-radius: 0; color: white; font-weight: bold;
+    cursor: pointer;
+  }
+  .card-footer { background-color: #352BA5; text-align: center; padding: 10px; }
+  .card-footer a { color: #ffffff; font-size: 13px; text-decoration: underline; }
+
+  .vote-box {
+    background-color: #ffffff;
+    border-radius: 0;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-top: 20px;
+  }
+  .vote-box h4 { color: #1B1B6C; margin-bottom: 12px; font-weight: 600; }
+
+  .progress-container {
+    display: flex;
+    height: 22px;
+    border-radius: 0;
+    overflow: hidden;
+    background-color: #e6e6e6;
+    margin-bottom: 20px;
+  }
+  .progress-cool {
+    background-color: #F61067;
+    width: 50%;
+    color: white;
+    text-align: center;
+    line-height: 22px;
+    font-weight: bold;
+  }
+  .progress-lame {
+    background-color: #25c991;
+    width: 50%;
+    color: white;
+    text-align: center;
+    line-height: 22px;
+    font-weight: bold;
+  }
+
+  .vote-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+  .vote-buttons button {
+    flex: 1;
+    max-width: 220px;
+    padding: 16px 0;
+    font-size: 18px;
+    border-radius: 0;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .vote-buttons button:first-child {
+    background-color: #F61067; color: white; border: none;
+  }
+  .vote-buttons button:last-child {
+    background-color: white; color: #25c991; border: 2px solid #25c991;
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #1B1B6C;
+    color: white;
+    padding: 15px 60px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    .content { flex-direction: column; padding: 30px; }
+    .left, .right { width: 100%; }
+    iframe { height: 250px; }
+    .vote-buttons button { max-width: 180px; font-size: 16px; }
+  }
+
+  @media (max-width: 600px) {
+    .jumbotron { padding: 50px 20px; text-align: center; }
+    .jumbotron h1 { font-size: 32px; }
+    .jumbotron p { font-size: 16px; }
+    .vote-buttons { flex-direction: column; gap: 10px; }
+    .vote-buttons button { width: 100%; padding: 12px 0; font-size: 16px; max-width: none; }
+    iframe { height: 200px; }
+    footer { padding: 15px 20px; font-size: 12px; }
+  }
+
 </style>
 </head>
-
 <body>
 
-<!-- Mongol pattern -->
-<svg class="bg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs>
-    <pattern id="mongol-pat" width="120" height="120" patternUnits="userSpaceOnUse">
-      <rect width="120" height="120" fill="transparent"></rect>
-      <path d="M60 10 L80 60 L60 110 L40 60 Z" fill="var(--pattern)"></path>
-      <rect x="58" width="4" height="120" fill="var(--pattern)"></rect>
-      <rect y="58" width="120" height="4" fill="var(--pattern)"></rect>
-    </pattern>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#mongol-pat)"></rect>
-</svg>
-<div class="overlay"></div>
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>Welcome to Bootstrap v3.3.7. Check out this awesome jumbotron!</p>
+  <a href="#" class="btn-learn">LEARN MORE</a>
+</div>
 
-<main class="cv">
+<div class="content">
+  <div class="left">
+    <h2>Heading goes here</h2>
+    <p>Cupcake ipsum dolor sit amet caramels halvah souffle sugar plum. Friutcake lollipop tiramisu pastry halvah sweet lemon drops. Jelly beans marshmallow jujubes. Padding macaroon chocolate cake chupa chups. Tootsie roll wafer jelly beans cotton candy jelly. Liquorice chocolate cale tart jelly. Chocolate pastry liquorice cupcake chocolate.</p>
+    <iframe src="https://www.youtube.com/embed/ygTZZpVkmKg" frameborder="0" allowfullscreen></iframe>
+  </div>
 
-  <!-- Vertical Mongolian -->
-  <div class="mongol"> ᠣᠳᠬᠠᠨᠪᠠᠶᠠᠷ ᠪᠢᠯᠢᢉᠦᠨ</div>
-
-  <!-- Side Panel -->
-  <aside class="side">
-    <div class="photo">Photo</div>
-
-    <div class="name">Bilguun</div>
-    <div class="role">Electronic Engineering</div>
-
-    <div class="contact">
-      <div><b>Email:</b> o.bilguun1356@gmail.com</div>
-      <div><b>Утас:</b> +976 99999999</div>
-      <div><b>Хаяг:</b> Улаанбаатар</div>
+  <div class="right">
+    <div class="messages">
+      ✉️ MESSAGES <span class="badge">3</span>
     </div>
 
-    <div class="section-title">Ур чадвар</div>
-    <div class="skills">
-      <div class="skill">HTML/CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">React</div>
-      <div class="skill">Node.js</div>
-      <div class="skill">SQL</div>
+    <div class="card">
+      <div class="card-header">
+        <h2>Welcome Candidate!</h2>
+      </div>
+      <div class="card-body">
+        <p>You are a Starfleet Academy candidate. Greet the Captain in a <em>respectful</em> fashion.</p>
+        <input type="text" placeholder="Input your greeting..">
+        <button>SEND</button>
+      </div>
+      <div class="card-footer">
+        <a href="#">I don't watch Star Trek and don't get this reference</a>
+      </div>
     </div>
 
-    <div class="section-title">Хэл</div>
-    <div class="skills">
-      <div class="skill">Монгол</div>
-      <div class="skill">English</div>
+    <div class="vote-box">
+      <h4>Cast your vote! What do you think about space? See vote progress bar below!</h4>
+      
+      <div class="progress-container">
+        <div class="progress-cool" id="progress-cool">50%</div>
+        <div class="progress-lame" id="progress-lame">50%</div>
+      </div>
+
+      <div class="vote-buttons">
+        <button id="cool-btn">COOL</button>
+        <button id="lame-btn">LAME</button>
+      </div>
     </div>
-  </aside>
+  </div>
+</div>
 
-  <!-- MAIN -->
-  <section class="main">
-    <h2 style="font-size:20px">Танилцуулга</h2>
-    <p class="summary">
-      Би вэб систем, backend API болон өгөгдлийн сантай ажиллах туршлагатай системийн хөгжүүлэгч.
-    </p>
+<footer>© 2017 All Rights Reserved, SomeCompany.</footer>
 
-    <div class="block">
-      <div class="section-title">Ажлын туршлага</div>
+<script>
+let coolVotes = 1;
+let lameVotes = 1;
 
-      <article class="job">
-        <h4>Senior Software Engineer — XYZ</h4>
-        <div class="meta">2021 — Одоо</div>
-        <p>Микросервис хөгжүүлэлт, архитектур, CI/CD ба автоматжуулалтын ажлууд.</p>
-      </article>
+const coolBtn = document.getElementById('cool-btn');
+const lameBtn = document.getElementById('lame-btn');
+const progressCool = document.getElementById('progress-cool');
+const progressLame = document.getElementById('progress-lame');
 
-      <article class="job">
-        <h4>Software Developer — ABC</h4>
-        <div class="meta">2018 — 2021</div>
-        <p>Frontend ба backend хөгжүүлэлт, React + Node.js төслүүд.</p>
-      </article>
-    </div>
+function updateProgress() {
+  let total = coolVotes + lameVotes;
+  let coolPercent = Math.round((coolVotes / total) * 100);
+  let lamePercent = 100 - coolPercent;
 
-    <div class="block">
-      <div class="section-title">Боловсрол</div>
-      <p><b>Электроник — Бакалавр</b> (2024–2028)</p>
-    </div>
+  progressCool.style.width = coolPercent + '%';
+  progressCool.textContent = coolPercent + '%';
 
-    <div class="block">
-      <div class="section-title">НӨХЦӨЛ</div>
-      <p class="summary">Full-time.</p>
-    </div>
-  </section>
-</main>
+  progressLame.style.width = lamePercent + '%';
+  progressLame.textContent = lamePercent + '%';
+}
+
+coolBtn.addEventListener('click', () => { coolVotes++; updateProgress(); });
+lameBtn.addEventListener('click', () => { lameVotes++; updateProgress(); });
+
+updateProgress();
+</script>
 
 </body>
 </html>
