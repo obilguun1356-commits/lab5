@@ -25,7 +25,7 @@
     color: white;
     padding: 12px 28px;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 0;
     font-weight: bold;
   }
 
@@ -38,7 +38,7 @@
   }
   .left { width: 60%; }
   .right { width: 35%; }
-  iframe { width: 100%; height: 300px; margin-top: 20px; border-radius: 8px; }
+  iframe { width: 100%; height: 300px; margin-top: 20px; border: none; }
 
   /* MESSAGES */
   .messages {
@@ -46,7 +46,6 @@
     color: white;
     padding: 10px 15px;
     font-weight: bold;
-    border-radius: 4px;
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
@@ -65,7 +64,7 @@
   /* CARD */
   .card {
     background-color: #1B1B6C;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     color: white;
@@ -75,12 +74,12 @@
   .card-header { background-color: #9090A5; padding: 15px; color: white; }
   .card-body { padding: 20px; background-color: #13124F; }
   .card-body input {
-    width: 100%; padding: 10px; border: none; border-radius: 3px;
+    width: 100%; padding: 10px; border: none; border-radius: 0;
     margin-bottom: 15px; background-color: #1B1B6C; color: white;
   }
   .card-body button {
     width: 100%; padding: 12px; background-color: #F61067;
-    border: none; border-radius: 3px; color: white; font-weight: bold;
+    border: none; border-radius: 0; color: white; font-weight: bold;
     cursor: pointer;
   }
   .card-footer { background-color: #352BA5; text-align: center; padding: 10px; }
@@ -89,7 +88,7 @@
   /* VOTE BOX */
   .vote-box {
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 0;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     text-align: center;
@@ -97,37 +96,21 @@
   }
   .vote-box h4 { color: #1B1B6C; margin-bottom: 12px; font-weight: 600; }
 
-  .vote-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 15px;
-  }
-  .vote-buttons button {
-    width: 150px;
-    padding: 12px 0;
-    font-size: 16px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .vote-buttons button:first-child { background-color: #F61067; color: white; border: none; }
-  .vote-buttons button:last-child { background-color: white; color: #25c991; border: 2px solid #25c991; }
-  .vote-buttons button:hover:first-child { opacity: 0.85; }
-  .vote-buttons button:hover:last-child { background-color: #e6f7f1; }
-
+  /* Progress Bar ABOVE Buttons */
   .progress-container {
     display: flex;
-    height: 25px;
-    border-radius: 25px;
+    height: 22px;
+    border-radius: 0;
     overflow: hidden;
+    background-color: #e6e6e6;
+    margin-bottom: 20px;
   }
   .progress-cool {
     background-color: #F61067;
     width: 50%;
     color: white;
     text-align: center;
-    line-height: 25px;
+    line-height: 22px;
     font-weight: bold;
   }
   .progress-lame {
@@ -135,8 +118,30 @@
     width: 50%;
     color: white;
     text-align: center;
-    line-height: 25px;
+    line-height: 22px;
     font-weight: bold;
+  }
+
+  /* Buttons (Now Longer) */
+  .vote-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+  .vote-buttons button {
+    flex: 1;
+    max-width: 220px;
+    padding: 16px 0;
+    font-size: 18px;
+    border-radius: 0;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .vote-buttons button:first-child {
+    background-color: #F61067; color: white; border: none;
+  }
+  .vote-buttons button:last-child {
+    background-color: white; color: #25c991; border: 2px solid #25c991;
   }
 
   /* FOOTER */
@@ -152,19 +157,19 @@
   }
 
   /* MEDIA QUERIES */
-  @media (max-width: 1024px) { /* Tablet */
+  @media (max-width: 1024px) {
     .content { flex-direction: column; padding: 30px; }
     .left, .right { width: 100%; }
     iframe { height: 250px; }
-    .vote-buttons button { width: 120px; font-size: 14px; }
+    .vote-buttons button { max-width: 180px; font-size: 16px; }
   }
 
-  @media (max-width: 600px) { /* Mobile */
+  @media (max-width: 600px) {
     .jumbotron { padding: 50px 20px; text-align: center; }
     .jumbotron h1 { font-size: 32px; }
     .jumbotron p { font-size: 16px; }
     .vote-buttons { flex-direction: column; gap: 10px; }
-    .vote-buttons button { width: 100%; padding: 10px 0; font-size: 14px; }
+    .vote-buttons button { width: 100%; padding: 12px 0; font-size: 16px; max-width: none; }
     iframe { height: 200px; }
     footer { padding: 15px 20px; font-size: 12px; }
   }
@@ -182,7 +187,7 @@
 <div class="content">
   <div class="left">
     <h2>Heading goes here</h2>
-    <p>Cupcake ipsum dolor sit amet...</p>
+    <p>Cupcake ipsum dolor sit amet caramels halvah souffle sugar plum. Friutcake lollipop tiramisu pastry halvah sweet lemon drops. Jelly beans marshmallow jujubes. Padding macaroon chocolate cake chupa chups. Tootsie roll wafer jelly beans cotton candy jelly. Liquorice chocolate cale tart jelly. Chocolate pastry liquorice cupcake chocolate.</p>
     <iframe src="https://www.youtube.com/embed/ygTZZpVkmKg" frameborder="0" allowfullscreen></iframe>
   </div>
 
@@ -206,14 +211,18 @@
     </div>
 
     <div class="vote-box">
-      <h4>Cast your vote! What do you think about space?</h4>
-      <div class="vote-buttons">
-        <button id="cool-btn">COOL</button>
-        <button id="lame-btn">LAME</button>
-      </div>
+      <h4>Cast your vote! What do you think about space? See vote progress bar below!</h4>
+      
+      <!-- Progress Bar ABOVE Buttons -->
       <div class="progress-container">
         <div class="progress-cool" id="progress-cool">50%</div>
         <div class="progress-lame" id="progress-lame">50%</div>
+      </div>
+
+      <!-- Buttons BELOW -->
+      <div class="vote-buttons">
+        <button id="cool-btn">COOL</button>
+        <button id="lame-btn">LAME</button>
       </div>
     </div>
   </div>
